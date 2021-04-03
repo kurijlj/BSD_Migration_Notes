@@ -37,6 +37,22 @@ da0: quirks=0x3<NO_SYNC_CACHE,NO_6_BYTE>
 ```
 
 
+## Partitioning Scheme
+---
+
+```
+# Device                Mountpoint      FStype  Options         		Dump    Pass#	(Size)
+/dev/gpt/ssdboot	                boot                    		         	512k
+/dev/gpt/ssdrootfs      /               ufs     rw              		1       1	2g
+/dev/gpt/ssdvarfs       /var            ufs     rw              		2       2	2g
+tmpfs                   /tmp            tmpfs   rw,mode=01777   		0       0
+/dev/gpt/ssdusrfs       /usr            ufs     rw              		2       2
+/dev/gpt/hdhomefs	/home		ufs	rw				2	2
+md99            	none            swap    sw,file=/usr/swap/swap,late     0       0	4g
+```
+
+
 ## References
 ---
-1. [FreeBSD Find Out All Installed Hard Disk Size Information](https://www.cyberciti.biz/faq/freebsd-hard-disk-information/)
+1. [Using a Solid State Drive with FreeBSD](http://www.wonkity.com/~wblock/docs/html/ssd.html)
+2. [FreeBSD Find Out All Installed Hard Disk Size Information](https://www.cyberciti.biz/faq/freebsd-hard-disk-information/)
