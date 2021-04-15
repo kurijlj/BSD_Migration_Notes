@@ -52,7 +52,42 @@ md99            	none            swap    sw,file=/usr/swap/swap,late     0      
 ```
 
 
+## Seting Up Desktop Firewall
+---
+Edit /etc/rc.conf file. This file is one in charge to acttivate OS level
+features as well as some other important software.
+Put following lines into /etc/rc.conf:
+```
+firewall_enable="YES"
+firewall_quiet="YES"
+firewall_type="workstation"
+# These are open ports for incoming traffic
+firewall_myservices="22/tcp 80/tcp 443/tcp 10000/tcp"
+# To allow any external ip to make use of the above services we will set:
+firewall_allowservices="any"
+# To register those denied accesses, be it because they lack the ssh key,
+# because they are hitting a port we haven’t enabled, etc, we will issue
+# the next command:
+firewall_logdeny="YES"
+```
+
+To start a firewall service run following from command prompt:
+`$ sudo service ipfw onestart`
+
+To check it is working we will use:
+~$ sudo service ipfw status`
+
+Be sure to check out /etc/rc.firewall
+
+To list open files on the system run:
+
+To list open ports on the system run:
+
+PF or IPFW?
+
+
 ## References
 ---
 1. [Using a Solid State Drive with FreeBSD](http://www.wonkity.com/~wblock/docs/html/ssd.html)
 2. [FreeBSD Find Out All Installed Hard Disk Size Information](https://www.cyberciti.biz/faq/freebsd-hard-disk-information/)
+3. [How to configure the IPFW firewall on FreeBSD](https://www.adminbyaccident.com/freebsd/how-to-freebsd/how-to-configure-the-ipfw-firewall-on-freebsd/)
