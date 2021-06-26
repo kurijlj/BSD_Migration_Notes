@@ -94,7 +94,7 @@ PF or IPFW?
 
 **Mount Windows ntfs Partitions**
 
-sudo ntfs-3g -o windows_names /dev/da0s1 /mnt/disk1
+`sudo ntfs-3g -o windows_names /dev/da0s1 /mnt/disk1`
 
 
 ## References
