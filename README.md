@@ -88,10 +88,12 @@ PF or IPFW?
 
 ## Mount Linux and Windows Partitions (fuse)
 ---
-**Mount Linux ext* Partitions**
+**Mount Linux ext\* Partitions**
+
 `sudo fuse-ext2 -o ro,allow_other,gid=0,umask=002 /dev/partition /mnt/point`
 
 **Mount Windows ntfs Partitions**
+
 sudo ntfs-3g -o windows_names /dev/da0s1 /mnt/disk1
 
 
