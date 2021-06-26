@@ -8,11 +8,11 @@
 ### Hard Drives
 **Searching through 'dmesg.boot'**
 
-1. IDE Hard disk names starts with ad – /dev/ad0 first IDE hard disk, /dev/ad1 second hard disk and so on
-2. SATA/SSD (ATA Direct Access device driver) disk names starts with ad – /dev/ada, /dev/sdb and so on.
-3. SCSI Hard disk names starts with da – /dev/da*
-4. IDE CDROM/RW/DVD names starts with acd – /dev/acd*
-5. SCSI CDROM/RW/DVD names starts with cd – /dev/cd*
+1. IDE Hard disk names starts with /dev/ad0 first IDE hard disk, /dev/ad1 second hard disk and so on
+2. SATA/SSD (ATA Direct Access device driver) disk names starts with /dev/ada, /dev/sdb and so on.
+3. SCSI Hard disk names starts with /dev/da*
+4. IDE CDROM/RW/DVD names starts with /dev/acd*
+5. SCSI CDROM/RW/DVD names starts with /dev/cd*
 
 ```
 > egrep 'da[0-9]|cd[0-]' /var/run/dmesg.boot
@@ -84,6 +84,15 @@ To list open files on the system run:
 To list open ports on the system run:
 
 PF or IPFW?
+
+
+## Mount Linux and Windows Partitions (fuse)
+---
+**Mount Linux ext* Partitions**
+`sudo fuse-ext2 -o ro,allow_other,gid=0,umask=002 /dev/partition /mnt/point`
+
+**Mount Windows ntfs Partitions**
+sudo ntfs-3g -o windows_names /dev/da0s1 /mnt/disk1
 
 
 ## References
